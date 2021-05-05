@@ -7,6 +7,8 @@ before_install:
 php:
   - 7.4
 before_script:
+  - travis_retry composer self-update
+  - travis_retry composer install --prefer-source --no-interaction
   - cp .env.example .env
   - php artisan migrate
   - php artisan key:generate
